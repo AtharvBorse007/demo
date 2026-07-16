@@ -1,13 +1,12 @@
 name: CI
 on: push
 jobs:
- lint:
+ deploy:
    runs-on: ubuntu-latest
    steps:
-    - uses: actions/checkout@v4
-    - run: echo "Lint step running"
- test:
-   runs-on: ubuntu-latest
-   steps:
-    - uses: actions/chechkout@v4
-    - run: echo "Test step running"
+     - uses: actions/checkout@v4
+     - name: Deploy
+        env:
+         TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: |
+         echo "Deploying with token length: ${#TOKEN}"
