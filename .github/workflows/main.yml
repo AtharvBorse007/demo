@@ -6,7 +6,8 @@ jobs:
   steps:
     - run: echo "output" > result.txt
     - uses: actions/upload-artifact@v4
-  deploy:
+      with: { name: result, path: result.txt }
+ deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
