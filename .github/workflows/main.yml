@@ -1,12 +1,12 @@
 name: CI
 on: push
 jobs:
- deploy:
-   runs-on: ubuntu-latest
-   steps:
-     - uses: actions/checkout@v4
-     - name: Deploy
-        env:
-         TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-        run: |
-         echo "Deploying with token length: ${#TOKEN}"
+ build:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - run: mkdir -p dist && echo "hello" > dist/app.txt
+    - uses: actions/upload-artifacts@v4
+      with:
+        name: app-build
+        path: dist/
