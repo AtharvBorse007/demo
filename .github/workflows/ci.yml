@@ -1,17 +1,8 @@
-#what the workflow is called
 name: CI
-#when it runs
 on: push
-#WHAT it does
-jobs:  
-  test:
-    runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-      - run: npm install
-      - run: npm te
-      - run: echo "Build started for $GITHUB_SHA"
-      - run: ls-la
-
+ jobs:
+  greet:
+   runs-on: ubuntu-latest
+   steps:
+    - uses: actions/checkout@v4
+    - run: echo "Hello from Github Actions!"
