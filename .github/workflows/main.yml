@@ -1,16 +1,20 @@
-name: CI
-on: [push, pull_request]
+name: Deploy Pages
+on: 
+  push:
+    branches: [ main ]
+permissions: 
+  pages: write
+  id-token: write
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: ["18", "20"]
+  deploy:
+    runs-on: ububuntu-latest
+    environment: github-pages
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/upload-pages-artifacts@v3
         with:
-          node-version: ${{ matrix.node }}
-          cache: "npm"
-      - run: npm ci
-      - run: npm test
+          path:
+      - uses: actions/deploy-pages@v4    
+  
+    
+      
